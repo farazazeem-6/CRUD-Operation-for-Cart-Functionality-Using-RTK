@@ -1,0 +1,1 @@
+const itemsAPI = 'http://localhost:3000/shoppingItems';
