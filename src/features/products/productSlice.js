@@ -31,7 +31,6 @@ export const productSlice = createSlice({
             })
             .addCase(fetchAsyncProducts.rejected, (state, action) => {
                 state.status = 'error';
-                state.error = action.error.message;
             })
     }
 })
