@@ -1,19 +1,20 @@
 import React, { useEffect } from "react";
 import "../cart/Cart.css";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAsyncItems } from "./cartSlice";
-function Products() {
+import { deleteAsyncItems, fetchAsyncItems } from "./cartSlice";
+
+function Cart() {
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.product.products);
+  const items = useSelector((state) => state.cart.items);
 
   useEffect(() => {
     dispatch(fetchAsyncItems());
   }, []);
   return (
-    <div>
+    <div className="cardContainer">
       <div>
         {items.map((item) => (
-          <div className="cart-item">
+          <div className="cart-item" key={item.id}>
             <img className="img-fluid" src={item.thumbnail} alt="" />
             <div className="description">
               <p>{item.title}</p>
@@ -32,7 +33,7 @@ function Products() {
               </select>
             </div>
             <div className="close">
-              <button onClick={() => dispatch(deleteAsync(item.id))}>X</button>
+              <button onClick={() => dispatch(deleteAsyncItems(item.id))}>X</button>
             </div>
           </div>
         ))}
@@ -44,4 +45,4 @@ function Products() {
   );
 }
 
-export default Products;
+export default Cart;
