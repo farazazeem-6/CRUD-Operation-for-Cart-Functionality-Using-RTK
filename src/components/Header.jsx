@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "../App.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Cart from "../features/cart/Cart";
+import { fetchAsyncItems } from "../features/cart/cartSlice";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -19,6 +20,11 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 function Header() {
   const [showCart, setShowCart] = useState(false);
   const items = useSelector((state) => state.cart.items);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAsyncItems());
+  }, []);
   return (
     <div>
       <div className="header">
