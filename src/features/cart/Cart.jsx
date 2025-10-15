@@ -21,7 +21,7 @@ function Cart() {
               <span>{item.brand}</span>
               <strong>${item.price}</strong>
             </div>
-            <div className="quantity">
+            {/* <div className="quantity">
               Quantity
               <select
                 value={item.quantity}
@@ -31,15 +31,17 @@ function Cart() {
                 <option value={2}>2</option>
                 <option value={3}>3</option>
               </select>
-            </div>
+            </div> */}
             <div className="close">
-              <button onClick={() => dispatch(deleteAsyncItems(item.id))}>X</button>
+              <button onClick={() => dispatch(deleteAsyncItems(item.id))}>
+                X
+              </button>
             </div>
           </div>
         ))}
       </div>
       <h1>
-        Total:{items.reduce((acc, item) => item.price * item.quantity + acc, 0)}
+        Total:${Math.floor(items.reduce((acc, item) => item.price + acc, 0))}
       </h1>
     </div>
   );

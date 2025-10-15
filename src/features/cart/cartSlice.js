@@ -1,4 +1,4 @@
-import { fetchItems, addItems } from './cartAPI';
+import { fetchItems, addItems, deleteItems } from './cartAPI';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 
@@ -16,18 +16,18 @@ export const addAsyncItems = createAsyncThunk(
         return response.data
     }
 )
-export const updateAsyncItems = createAsyncThunk(
-    'cart/updateItems',
-    async (id, updateItem) => {
-        const response = await updateItems(id, updateItem)
-        return response.data
-    }
-)
+// export const updateAsyncItems = createAsyncThunk(
+//     'cart/updateItems',
+//     async (id, updateItem) => {
+//         const response = await updateItems(id, updateItem)
+//         return response.data
+//     }
+// )
 export const deleteAsyncItems = createAsyncThunk(
     'cart/deleteItems',
     async (id) => {
-        const response = await deleteItems(id)
-        return response.data
+        await deleteItems(id)
+        return id
     }
 )
 const initialState = {
@@ -63,22 +63,23 @@ export const cartSlice = createSlice({
             .addCase(addAsyncItems.rejected, (state) => {
                 state.status = 'error'
             })
-            .addCase(updateAsyncItems.pending, (state) => {
-                state.status = 'loading'
-            })
-            .addCase(updateAsyncItems.fulfilled, (state, action) => {
-                state.status = 'idle'
-                state.items.push(action.payload)
-            })
-            .addCase(updateAsyncItems.rejected, (state) => {
-                state.status = 'error'
-            })
+            // .addCase(updateAsyncItems.pending, (state) => {
+            //     state.status = 'loading'
+            // })
+            // .addCase(updateAsyncItems.fulfilled, (state, action) => {
+            //     state.status = 'idle'
+            //     state.items.push(action.payload)
+            // })
+            // .addCase(updateAsyncItems.rejected, (state) => {
+            //     state.status = 'error'
+            // })
             .addCase(deleteAsyncItems.pending, (state) => {
                 state.status = 'loading'
             })
             .addCase(deleteAsyncItems.fulfilled, (state, action) => {
                 state.status = 'idle'
-                state.items.push(action.payload)
+                const index = state.items.findIndex(item => item.id === action.payload)
+                state.items.splice(index, 1)
             })
             .addCase(deleteAsyncItems.rejected, (state) => {
                 state.status = 'error'
