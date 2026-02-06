@@ -15,7 +15,7 @@ function Products() {
   return (
     <div>
       <div className="productContainer">
-        {products.map((product, index) => (
+        {products.map((product) => (
           <div className="card" key={product.id}>
             <img
             className="cardImage"
