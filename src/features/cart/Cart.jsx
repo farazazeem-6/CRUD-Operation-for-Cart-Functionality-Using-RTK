@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 import "../cart/Cart.css";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAsyncItems, fetchAsyncItems } from "./cartSlice";

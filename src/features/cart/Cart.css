@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* border: 1px solid grey; */
   justify-content: space-around;
   border-bottom: 1px solid #ccc;
 }
