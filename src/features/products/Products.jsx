@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "../products/Products.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAsyncProducts } from "./productSlice";
