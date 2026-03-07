@@ -16,13 +16,6 @@ export const addAsyncItems = createAsyncThunk(
         return response.data
     }
 )
-// export const updateAsyncItems = createAsyncThunk(
-//     'cart/updateItems',
-//     async (id, updateItem) => {
-//         const response = await updateItems(id, updateItem)
-//         return response.data
-//     }
-// )
 export const deleteAsyncItems = createAsyncThunk(
     'cart/deleteItems',
     async (id) => {
@@ -63,16 +56,6 @@ export const cartSlice = createSlice({
             .addCase(addAsyncItems.rejected, (state) => {
                 state.status = 'error'
             })
-            // .addCase(updateAsyncItems.pending, (state) => {
-            //     state.status = 'loading'
-            // })
-            // .addCase(updateAsyncItems.fulfilled, (state, action) => {
-            //     state.status = 'idle'
-            //     state.items.push(action.payload)
-            // })
-            // .addCase(updateAsyncItems.rejected, (state) => {
-            //     state.status = 'error'
-            // })
             .addCase(deleteAsyncItems.pending, (state) => {
                 state.status = 'loading'
             })
