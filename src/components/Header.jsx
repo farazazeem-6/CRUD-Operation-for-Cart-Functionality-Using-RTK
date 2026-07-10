@@ -29,7 +29,7 @@ function Header() {
     <div>
       <div className="header">
         <div className="logo">
-          <h1>CART ITEMS</h1>
+          <h2>CART ITEMS</h2>
         </div>
         <div className="cartIcon">
           <IconButton
