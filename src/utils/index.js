@@ -1,1 +1,1 @@
-const itemsAPI = 'http://localhost:3000/shoppingItems';
+// Utility functions (currently empty - add helpers here as needed)

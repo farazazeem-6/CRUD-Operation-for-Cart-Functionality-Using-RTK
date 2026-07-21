@@ -1,4 +1,6 @@
-import axios from 'axios'
+import axios from 'axios';
+import { API_ENDPOINTS } from '../../config/api';
+
 export function fetchProducts() {
-    return axios.get('http://localhost:3000/products')
+  return axios.get(API_ENDPOINTS.PRODUCTS);
 }

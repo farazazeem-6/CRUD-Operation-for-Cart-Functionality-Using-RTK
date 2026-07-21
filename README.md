@@ -1,16 +1,80 @@
-# React + Vite
+# Shopping Cart Application with Redux
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React shopping cart application built with Vite and Redux for state management. This project demonstrates real-world Redux patterns including slices, async thunks, and API integration.
 
-Currently, two official plugins are available:
+## 🛍️ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Product Catalog** - Browse available products with descriptions and prices
+- **Shopping Cart** - Add/remove products, update quantities
+- **Redux State Management** - Centralized state for cart and products
+- **Mock API** - JSON server for simulating backend API calls
+- **Responsive Design** - Clean UI with CSS styling
 
-## React Compiler
+## 📁 Project Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+src/
+├── app/
+│   └── store.js              # Redux store configuration
+├── components/
+│   └── Header.jsx            # Navigation header
+├── features/
+│   ├── cart/                 # Cart feature slice
+│   │   ├── Cart.jsx
+│   │   ├── cartSlice.js     # Redux slice for cart state
+│   │   └── cartAPI.js       # Cart API calls
+│   └── products/             # Products feature slice
+│       ├── Products.jsx
+│       ├── productSlice.js  # Redux slice for products state
+│       └── productAPI.js    # Product API calls
+├── utils/
+│   └── index.js              # Utility functions
+├── App.jsx
+├── main.jsx
+└── index.css
+```
 
-## Expanding the ESLint configuration
+## 🚀 Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+- Node.js (v16+)
+- npm or yarn
+
+### Installation
+
+```bash
+npm install
+```
+
+### Running the Application
+
+Start the development server:
+```bash
+npm run dev
+```
+
+Start the mock JSON server:
+```bash
+npm run server
+```
+
+### Building for Production
+
+```bash
+npm run build
+```
+
+## 🏗️ Tech Stack
+
+- **React** - UI library
+- **Vite** - Build tool and dev server
+- **Redux** - State management
+- **JSON Server** - Mock API server
+- **ESLint** - Code linting
+
+## 📚 Redux Architecture
+
+This project uses Redux Toolkit's modern approach:
+- **Slices** - Encapsulated state, reducers, and actions (cart and products)
+- **Async Thunks** - Handling API calls and side effects
+- **Centralized Store** - Single source of truth for app state
