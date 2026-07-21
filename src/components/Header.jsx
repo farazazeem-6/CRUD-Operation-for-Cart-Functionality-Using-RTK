@@ -24,7 +24,7 @@ function Header() {
 
   useEffect(() => {
     dispatch(fetchAsyncItems());
-  }, []);
+  }, [dispatch]);
   return (
     <div>
       <div className="header">
@@ -34,7 +34,7 @@ function Header() {
         <div className="cartIcon">
           <IconButton
             aria-label="cart"
-            onClick={() => (showCart ? setShowCart(false) : setShowCart(true))}
+            onClick={() => setShowCart(!showCart)}
           >
             <StyledBadge
               badgeContent={items ? items.length : "0"}

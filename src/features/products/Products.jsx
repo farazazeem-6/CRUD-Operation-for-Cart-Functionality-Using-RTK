@@ -8,17 +8,32 @@ import { addAsyncItems } from "../cart/cartSlice";
 function Products() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.products);
+  const status = useSelector((state) => state.product.status);
+  const error = useSelector((state) => state.product.error);
 
   useEffect(() => {
     dispatch(fetchAsyncProducts());
-  },[]);
+  }, [dispatch]);
+
+  if (status === 'loading') {
+    return <div style={{ textAlign: 'center', padding: '20px' }}>Loading products...</div>;
+  }
+
+  if (error) {
+    return (
+      <div style={{ color: 'red', textAlign: 'center', padding: '20px' }}>
+        Error: {error}
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className="productContainer">
         {products.map((product) => (
           <div className="card" key={product.id}>
             <img
-            className="cardImage"
+              className="cardImage"
               src={product.images}
               alt="Denim Jeans"
               style={{ width: "100%" }}
